@@ -1,0 +1,34 @@
+{
+  "name": "nextjs-k6-performance-test",
+  "version": "1.0.0",
+  "description": "Next.js 애플리케이션 k6 성능 부하테스트 예제",
+  "scripts": {
+    "dev": "next dev -p 4000",
+    "build": "next build",
+    "start": "next start -p 4000",
+    "lint": "next lint",
+    "test:smoke": "k6 run tests/k6/smoke.js",
+    "test:load": "k6 run tests/k6/load.js",
+    "test:stress": "k6 run tests/k6/stress.js",
+    "test:spike": "k6 run tests/k6/spike.js",
+    "test:soak": "k6 run tests/k6/soak.js",
+    "test:all": "npm run test:smoke && npm run test:load && npm run test:stress"
+  },
+  "dependencies": {
+    "next": "14.0.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "swr": "^2.2.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.5",
+    "@types/react": "^18.2.45",
+    "@types/react-dom": "^18.2.18",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.56.0",
+    "eslint-config-next": "14.0.4",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.3.3"
+  }
+}
