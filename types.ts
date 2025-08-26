@@ -1,11 +1,40 @@
 /**
  * 사용자 정보 타입
+ * 애플리케이션 전체에서 사용되는 사용자 정보를 정의합니다.
+ * 
  * @interface User
- * @property {string} id - 사용자 고유 식별자
- * @property {string} name - 사용자 이름
+ * @description 시스템 내 모든 사용자의 기본 정보를 담는 인터페이스
+ * 
+ * @property {string} id - 사용자 고유 식별자 (UUID 형식 권장)
+ *                         예: "550e8400-e29b-41d4-a716-446655440000"
+ *                         데이터베이스의 Primary Key로 사용됨
+ * 
+ * @property {string} name - 사용자 이름 (표시명)
+ *                          최소 2자, 최대 50자 권장
+ *                          특수문자 제한 고려
+ * 
  * @property {string} email - 사용자 이메일 주소
- * @property {string} avatar - 사용자 아바타 이미지 URL
- * @property {Date} createdAt - 계정 생성일시
+ *                           유효한 이메일 형식 필수
+ *                           시스템 내 유니크 제약조건 적용
+ *                           로그인 ID로도 사용 가능
+ * 
+ * @property {string} avatar - 사용자 프로필 아바타 이미지 URL
+ *                            CDN 경로 또는 외부 이미지 서비스 URL
+ *                            기본값: 디폴트 아바타 이미지 경로
+ *                            권장 형식: JPEG, PNG (최대 5MB)
+ * 
+ * @property {Date} createdAt - 계정 생성일시 (UTC 기준)
+ *                              자동 생성되며 수정 불가
+ *                              사용자 가입 추적 및 통계에 활용
+ * 
+ * @example
+ * const user: User = {
+ *   id: "550e8400-e29b-41d4-a716-446655440000",
+ *   name: "홍길동",
+ *   email: "hong@example.com",
+ *   avatar: "https://cdn.example.com/avatars/user123.jpg",
+ *   createdAt: new Date("2024-01-01T00:00:00Z")
+ * };
  */
 export interface User {
   id: string;
